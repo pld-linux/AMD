@@ -55,17 +55,18 @@ Statyczna biblioteka amd.
 	CC="%{__cc}" \
 	F77="gfortran" \
 	CFLAGS="%{rpmcflags} -fPIC" \
+	LDFLAGS="%{rpmldflags}" \
 	libdir=%{_libdir}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_includedir}
+install -d $RPM_BUILD_ROOT%{_includedir}/AMD
 
 %{__make} -C Lib install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	libdir=%{_libdir}
 
-install Include/* $RPM_BUILD_ROOT%{_includedir}
+install Include/* $RPM_BUILD_ROOT%{_includedir}/AMD
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -82,7 +83,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libamd.so
 %{_libdir}/libamd.la
-%{_includedir}/*
+%{_includedir}/AMD
 
 %files static
 %defattr(644,root,root,755)
