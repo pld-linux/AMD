@@ -1,7 +1,7 @@
 Summary:	AMD: approximate minimum degree
 Name:		AMD
 Version:	2.2.0
-Release:	1
+Release:	2
 License:	LGPL
 Group:		Libraries
 Source0:	http://www.cise.ufl.edu/research/sparse/amd/%{name}-%{version}.tar.gz
@@ -59,12 +59,13 @@ Statyczna biblioteka amd.
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT%{_includedir}
 
 %{__make} -C Lib install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	libdir=%{_libdir}
 
-install -D Include/amd.h $RPM_BUILD_ROOT%{_includedir}/amd.h
+install Include/* $RPM_BUILD_ROOT%{_includedir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -81,7 +82,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libamd.so
 %{_libdir}/libamd.la
-%{_includedir}/amd.h
+%{_includedir}/*
 
 %files static
 %defattr(644,root,root,755)
