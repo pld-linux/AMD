@@ -1,4 +1,4 @@
-Summary:	AMD: approximate minimum degree
+Summary:	AMD: Approximate Minimum Degree
 Name:		AMD
 Version:	2.2.0
 Release:	3
@@ -14,11 +14,11 @@ BuildRequires:	libtool >= 2:1.5
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-AMD is a set of routines for ordering a sparse matrix prior
-to Cholesky factorization (or for LU factorization with
-diagonal pivoting). There are versions in both C and Fortran.
-A MATLAB interface is provided.
-Note that this software has nothing to do with AMD the company.
+AMD is a set of routines for ordering a sparse matrix prior to
+Cholesky factorization (or for LU factorization with diagonal
+pivoting). There are versions in both C and Fortran. A MATLAB
+interface is provided. Note that this software has nothing to do with
+AMD the company.
 
 %package devel
 Summary:	Header files for AMD library
