@@ -21,29 +21,29 @@ A MATLAB interface is provided.
 Note that this software has nothing to do with AMD the company.
 
 %package devel
-Summary:	Header files for amd library
-Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki amd
+Summary:	Header files for AMD library
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki AMD
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	UFconfig
 
 %description devel
-Header files for amd library.
+Header files for AMD library.
 
 %description devel -l pl.UTF-8
-Pliki nagłówkowe biblioteki amd.
+Pliki nagłówkowe biblioteki AMD.
 
 %package static
-Summary:	Static amd library
-Summary(pl.UTF-8):	Statyczna biblioteka amd
+Summary:	Static AMD library
+Summary(pl.UTF-8):	Statyczna biblioteka AMD
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
-Static amd library.
+Static AMD library.
 
 %description static -l pl.UTF-8
-Statyczna biblioteka amd.
+Statyczna biblioteka AMD.
 
 %prep
 %setup -q -n %{name}
