@@ -1,13 +1,13 @@
 Summary:	AMD: routines for ordering a sparse matrix
-Name:		amd
+Name:		AMD
 Version:	2.2.0
 Release:	1
 License:	LGPL
 Group:		Libraries
-Source0:	http://www.cise.ufl.edu/research/sparse/amd/AMD-%{version}.tar.gz
+Source0:	http://www.cise.ufl.edu/research/sparse/amd/%{name}-%{version}.tar.gz
 # Source0-md5:	f81fcae945de82864035b03ee20a8d2b
-Patch0:		%{name}-ufconfig.patch
-Patch1:		%{name}-shared.patch
+Patch0:		amd-ufconfig.patch
+Patch1:		amd-shared.patch
 URL:		http://www.cise.ufl.edu/research/sparse/amd/
 BuildRequires:	UFconfig
 BuildRequires:	libtool >= 2:1.5
@@ -46,7 +46,7 @@ Static amd library.
 Statyczna biblioteka amd.
 
 %prep
-%setup -q -n AMD
+%setup -q -n %{name}
 %patch0 -p1
 %patch1 -p1
 
