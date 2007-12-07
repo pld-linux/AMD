@@ -1,7 +1,7 @@
 Summary:	AMD: approximate minimum degree
 Name:		AMD
 Version:	2.2.0
-Release:	2
+Release:	3
 License:	LGPL
 Group:		Libraries
 Source0:	http://www.cise.ufl.edu/research/sparse/amd/%{name}-%{version}.tar.gz
