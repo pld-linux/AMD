@@ -1,4 +1,4 @@
-Summary:	AMD: routines for ordering a sparse matrix
+Summary:	AMD: approximate minimum degree
 Name:		AMD
 Version:	2.2.0
 Release:	1
