@@ -24,7 +24,7 @@ AMD the company.
 
 %description -l pl.UTF-8
 AMD to zbiór procedur do porządkowania macierzy rzadkich przed
-rozkładem Cholesky'ego (lub rozkładu LU z obrotami diagonalnymi).
+rozkładem Cholesky'ego (lub do rozkładu LU z obrotami diagonalnymi).
 Istnieją wersje zarówno w C, jak i Fortranie. Dostępny jest interfejs
 do MATLAB-a. Uwaga: to oprogramowanie nie ma nic wspólnego z firmą
 AMD.
