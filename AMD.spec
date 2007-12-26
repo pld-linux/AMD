@@ -1,4 +1,5 @@
 Summary:	AMD: Approximate Minimum Degree
+Summary(pl.UTF-8):	AMD: Approximate Minimum Degree (przybliżony minimalny stopień)
 Name:		AMD
 Version:	2.2.0
 Release:	3
@@ -10,6 +11,7 @@ Patch0:		amd-ufconfig.patch
 Patch1:		amd-shared.patch
 URL:		http://www.cise.ufl.edu/research/sparse/amd/
 BuildRequires:	UFconfig
+BuildRequires:	gcc-fortran
 BuildRequires:	libtool >= 2:1.5
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -19,6 +21,13 @@ Cholesky factorization (or for LU factorization with diagonal
 pivoting). There are versions in both C and Fortran. A MATLAB
 interface is provided. Note that this software has nothing to do with
 AMD the company.
+
+%description -l pl.UTF-8
+AMD to zbiór procedur do porządkowania macierzy rzadkich przed
+rozkładem Cholesky'ego (lub rozkładu LU z obrotami diagonalnymi).
+Istnieją wersje zarówno w C, jak i Fortranie. Dostępny jest interfejs
+do MATLAB-a. Uwaga: to oprogramowanie nie ma nic wspólnego z firmą
+AMD.
 
 %package devel
 Summary:	Header files for AMD library
