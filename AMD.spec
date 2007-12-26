@@ -85,12 +85,13 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README.txt
+%doc README.txt Doc/{ChangeLog,License}
 %attr(755,root,root) %{_libdir}/libamd.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libamd.so.0
 
 %files devel
 %defattr(644,root,root,755)
+%doc Doc/AMD_UserGuide.pdf
 %attr(755,root,root) %{_libdir}/libamd.so
 %{_libdir}/libamd.la
 %{_includedir}/amd
