@@ -1,5 +1,5 @@
 Summary:	AMD: Approximate Minimum Degree
-Summary(pl.UTF-8):	AMD: Approximate Minimum Degree (przybliżony minimalny stopień)
+Summary(pl.UTF-8):	AMD - przybliżony algorytm minimalnego stopnia
 Name:		AMD
 Version:	2.2.0
 Release:	3
