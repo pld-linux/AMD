@@ -3,7 +3,7 @@ Summary(pl.UTF-8):	AMD: Approximate Minimum Degree (przybliżony minimalny stopi
 Name:		AMD
 Version:	2.2.0
 Release:	3
-License:	LGPL
+License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://www.cise.ufl.edu/research/sparse/amd/%{name}-%{version}.tar.gz
 # Source0-md5:	f81fcae945de82864035b03ee20a8d2b
@@ -87,6 +87,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc README.txt
 %attr(755,root,root) %{_libdir}/libamd.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libamd.so.0
 
 %files devel
 %defattr(644,root,root,755)
