@@ -11,7 +11,6 @@ Patch0:		amd-ufconfig.patch
 Patch1:		amd-shared.patch
 URL:		http://www.cise.ufl.edu/research/sparse/amd/
 BuildRequires:	UFconfig
-BuildRequires:	gcc-fortran
 BuildRequires:	libtool >= 2:1.5
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -62,8 +61,7 @@ Statyczna biblioteka AMD.
 %build
 %{__make} \
 	CC="%{__cc}" \
-	F77="gfortran" \
-	CFLAGS="%{rpmcflags} -fPIC" \
+	CFLAGS="%{rpmcflags}" \
 	LDFLAGS="%{rpmldflags}" \
 	libdir=%{_libdir}
 
