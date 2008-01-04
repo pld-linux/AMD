@@ -92,7 +92,7 @@ diff -ur AMD/Lib/GNUmakefile AMD-shared/Lib/GNUmakefile
 -	$(AR) ../Lib/libamd.a $^
 -	- $(RANLIB) ../Lib/libamd.a
 +../Lib/libamd.la: amd_global.o $(AMDI) $(AMDL)
-+	libtool --tag=CC --mode=link $(CC) $(LDFLAGS) -o libamd.la -rpath $(libdir) $^ -lm
++	libtool --tag=CC --mode=link $(CC) $(LDFLAGS) -o libamd.la -rpath $(libdir) $(^:.o=.lo) -lm
 +
 +install: libamd.la
 +	install -d $(DESTDIR)$(libdir)
