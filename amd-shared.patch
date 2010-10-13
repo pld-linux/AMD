@@ -57,15 +57,14 @@ diff -ur AMD/Demo/Makefile AMD-shared/Demo/Makefile
  	./amd_f77cross > my_amd_f77cross.out
  	- diff amd_f77cross.out my_amd_f77cross.out
  
-diff -ur AMD/Lib/GNUmakefile AMD-shared/Lib/GNUmakefile
---- AMD/Lib/GNUmakefile	2007-12-02 19:00:35.000000000 +0100
-+++ AMD-shared/Lib/GNUmakefile	2007-12-02 18:59:22.000000000 +0100
+--- AMD/Lib/GNUmakefile.orig	2010-10-13 08:48:16.000000000 +0200
++++ AMD/Lib/GNUmakefile	2010-10-13 08:54:35.527741882 +0200
 @@ -2,7 +2,7 @@
  # AMD Makefile for compiling on Unix systems (for GNU make only)
  #-------------------------------------------------------------------------------
  
--default: ../Lib/libamd.a
-+default: ../Lib/libamd.la
+-default: libamd.a
++default: libamd.la
  
  include /usr/share/misc/UFconfig.mk
  
@@ -74,58 +73,58 @@ diff -ur AMD/Lib/GNUmakefile AMD-shared/Lib/GNUmakefile
  
  amd_global.o: ../Source/amd_global.c $(INC)
 -	$(C) -c $< -o $@
-+	libtool --tag=CC --mode=compile $(CC) $(CFLAGS) $(CONFIG) -I../Include -c $< -o $@
++	libtool --tag=CC --mode=compile $(C) -c $< -o $@
  
  amd_i_%.o: ../Source/amd_%.c $(INC)
 -	$(C) -DDINT -c $< -o $@
-+	libtool --tag=CC --mode=compile $(CC) -DDINT $(CFLAGS) $(CONFIG) -I../Include -c $< -o $@
++	libtool --tag=CC --mode=compile $(C) -DDINT -c $< -o $@
  
  amd_l_%.o: ../Source/amd_%.c $(INC)
 -	$(C) -DDLONG -c $< -o $@
-+	libtool --tag=CC --mode=compile $(CC) -DDLONG $(CFLAGS) $(CONFIG) -I../Include -c $< -o $@
++	libtool --tag=CC --mode=compile $(C) -DDLONG -c $< -o $@
  
  #-------------------------------------------------------------------------------
  # Create the libamd.a library (C versions only)
  #-------------------------------------------------------------------------------
  
--../Lib/libamd.a: amd_global.o $(AMDI) $(AMDL)
--	$(AR) ../Lib/libamd.a $^
--	- $(RANLIB) ../Lib/libamd.a
-+../Lib/libamd.la: amd_global.o $(AMDI) $(AMDL)
+-libamd.a: amd_global.o $(AMDI) $(AMDL)
+-	$(AR) libamd.a $^
+-	- $(RANLIB) libamd.a
++libamd.la: amd_global.o $(AMDI) $(AMDL)
 +	libtool --tag=CC --mode=link $(CC) $(LDFLAGS) -o libamd.la -rpath $(libdir) $(^:.o=.lo) -lm
 +
 +install: libamd.la
 +	install -d $(DESTDIR)$(libdir)
-+	libtool --mode=install cp libamd.la $(DESTDIR)$(libdir)/libamd.la
++	libtool --mode=install install libamd.la $(DESTDIR)$(libdir)/libamd.la
  
  #-------------------------------------------------------------------------------
  # compile the Fortran versions and the libamdf77.a library
  #-------------------------------------------------------------------------------
  
--fortran: ../Lib/libamdf77.a
-+fortran: ../Lib/libamdf77.la
+-fortran: libamdf77.a
++fortran: libamdf77.la
  
  AMDF77 = amd.o amdbar.o
  
  amd.o: ../Source/amd.f
 -	$(F77) $(F77FLAGS) -c ../Source/amd.f -o amd.o
-+	libtool --tag=F77 --mode=compile $(F77) $(F77FLAGS) ../Source/amd.f -o amd.o
++	libtool --tag=F77 --mode=compile $(F77) $(F77FLAGS) -c ../Source/amd.f -o amd.o
  
  amdbar.o: ../Source/amdbar.f
 -	$(F77) $(F77FLAGS) -c ../Source/amdbar.f -o amdbar.o
-+	libtool --tag=F77 --mode=compile $(F77) $(F77FLAGS) ../Source/amdbar.f -o amdbar.o
++	libtool --tag=F77 --mode=compile $(F77) $(F77FLAGS) -c ../Source/amdbar.f -o amdbar.o
  
--../Lib/libamdf77.a: $(AMDF77)
--	$(AR) ../Lib/libamdf77.a $^
--	- $(RANLIB) ../Lib/libamdf77.a
-+../Lib/libamdf77.la: $(AMDF77)
-+	libtool --tag=F77 --mode=link $(F77) $(LDFLAGS) -o libamdf77.la -rpath $(libdir) $^ -lm
+-libamdf77.a: $(AMDF77)
+-	$(AR) libamdf77.a $^
+-	- $(RANLIB) libamdf77.a
++libamdf77.la: $(AMDF77)
++	libtool --tag=F77 --mode=link $(F77) $(LDFLAGS) -o libamdf77.la -rpath $(libdir) $(^:.o=.lo) -lm
  
  #-------------------------------------------------------------------------------
  # Remove all but the files in the original distribution
-@@ -73,4 +71,4 @@
+@@ -73,4 +75,4 @@
  purge: distclean
  
  distclean: clean
--	- $(RM) ../Lib/libamd.a ../Lib/libamdf77.a
-+	- $(RM) ../Lib/libamd.la ../Lib/libamdf77.la
+-	- $(RM) libamd.a libamdf77.a
++	- $(RM) libamd.la libamdf77.la
