@@ -10,7 +10,7 @@ Source0:	http://www.cise.ufl.edu/research/sparse/amd/%{name}-%{version}.tar.gz
 Patch0:		amd-ufconfig.patch
 Patch1:		amd-shared.patch
 URL:		http://www.cise.ufl.edu/research/sparse/amd/
-BuildRequires:	UFconfig
+BuildRequires:	UFconfig >= 3.7.0
 BuildRequires:	libtool >= 2:1.5
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -33,7 +33,7 @@ Summary:	Header files for AMD library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki AMD
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	UFconfig
+Requires:	UFconfig >= 3.7.0
 
 %description devel
 Header files for AMD library.
