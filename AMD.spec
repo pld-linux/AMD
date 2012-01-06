@@ -2,7 +2,7 @@ Summary:	AMD: Approximate Minimum Degree
 Summary(pl.UTF-8):	AMD - przybliżony algorytm minimalnego stopnia
 Name:		AMD
 Version:	2.2.3
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://www.cise.ufl.edu/research/sparse/amd/%{name}-%{version}.tar.gz
@@ -73,7 +73,7 @@ install -d $RPM_BUILD_ROOT%{_includedir}/amd
 	DESTDIR=$RPM_BUILD_ROOT \
 	libdir=%{_libdir}
 
-install Include/* $RPM_BUILD_ROOT%{_includedir}/amd
+install Include/*.h $RPM_BUILD_ROOT%{_includedir}/amd
 
 %clean
 rm -rf $RPM_BUILD_ROOT
