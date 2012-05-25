@@ -1,12 +1,12 @@
 Summary:	AMD: Approximate Minimum Degree
 Summary(pl.UTF-8):	AMD - przybliżony algorytm minimalnego stopnia
 Name:		AMD
-Version:	2.2.3
-Release:	2
+Version:	2.2.4
+Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://www.cise.ufl.edu/research/sparse/amd/%{name}-%{version}.tar.gz
-# Source0-md5:	4d2a7db82406f880e7686fbd2df5a3bf
+# Source0-md5:	31943ff81859eb42d695d8a34d5b4201
 Patch0:		amd-ufconfig.patch
 Patch1:		amd-shared.patch
 URL:		http://www.cise.ufl.edu/research/sparse/amd/
