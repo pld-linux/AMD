@@ -66,7 +66,7 @@ diff -ur AMD/Demo/Makefile AMD-shared/Demo/Makefile
 -default: libamd.a
 +default: libamd.la
  
- include /usr/share/misc/UFconfig.mk
+ include /usr/share/misc/SuiteSparse_config.mk
  
 @@ -29,39 +29,41 @@
  #-------------------------------------------------------------------------------
