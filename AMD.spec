@@ -11,6 +11,7 @@ Patch0:		amd-ufconfig.patch
 Patch1:		amd-shared.patch
 URL:		http://www.cise.ufl.edu/research/sparse/amd/
 BuildRequires:	SuiteSparse_config >= 4.0.0
+BuildRequires:	gcc-fortran
 BuildRequires:	libtool >= 2:1.5
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -53,6 +54,28 @@ Static AMD library.
 %description static -l pl.UTF-8
 Statyczna biblioteka AMD.
 
+%package fortran
+Summary:	Fortran version of AMD library
+Summary(pl.UTF-8):	Wersja biblioteki AMD dla programów w Fortranie
+Group:		Development/Libraries
+
+%description fortran
+Fortran version of AMD library.
+
+%description fortran -l pl.UTF-8
+Wersja biblioteki AMD dla programów napisanych w Fortranie.
+
+%package fortran-static
+Summary:	Fortran version of AMD static library
+Summary(pl.UTF-8):	Wersja statycznej biblioteki AMD dla programów w Fortranie
+Group:		Development/Libraries
+
+%description fortran-static
+Fortran version of AMD static library.
+
+%description fortran-static -l pl.UTF-8
+Wersja statycznej biblioteki AMD dla programów napisanych w Fortranie.
+
 %prep
 %setup -q -n %{name}
 %patch0 -p1
@@ -65,11 +88,17 @@ Statyczna biblioteka AMD.
 	LDFLAGS="%{rpmldflags}" \
 	libdir=%{_libdir}
 
+%{__make} fortran \
+	CC="%{__cc}" \
+	CFLAGS="%{rpmcflags}" \
+	LDFLAGS="%{rpmldflags}" \
+	libdir=%{_libdir}
+
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_includedir}/amd
 
-%{__make} -C Lib install \
+%{__make} -C Lib install install-fortran \
 	DESTDIR=$RPM_BUILD_ROOT \
 	libdir=%{_libdir}
 
@@ -97,3 +126,14 @@ rm -rf $RPM_BUILD_ROOT
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libamd.a
+
+%files fortran
+%defattr(644,root,root,755)
+%{_libdir}/libamdf77.la
+%attr(755,root,root) %{_libdir}/libamdf77.so.*.*.*
+%attr(755,root,root) %{_libdir}/libamdf77.so.0
+%attr(755,root,root) %{_libdir}/libamdf77.so
+
+%files fortran-static
+%defattr(644,root,root,755)
+%{_libdir}/libamdf77.a

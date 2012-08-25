@@ -68,7 +68,7 @@ diff -ur AMD/Demo/Makefile AMD-shared/Demo/Makefile
  
  include /usr/share/misc/SuiteSparse_config.mk
  
-@@ -29,39 +29,41 @@
+@@ -29,39 +29,45 @@
  #-------------------------------------------------------------------------------
  
  amd_global.o: ../Source/amd_global.c $(INC)
@@ -119,10 +119,14 @@ diff -ur AMD/Demo/Makefile AMD-shared/Demo/Makefile
 -	- $(RANLIB) libamdf77.a
 +libamdf77.la: $(AMDF77)
 +	libtool --tag=F77 --mode=link $(F77) $(LDFLAGS) -o libamdf77.la -rpath $(libdir) $(^:.o=.lo) -lm
++
++install-fortran: libamdf77.la
++	install -d $(DESTDIR)$(libdir)
++	libtool --mode=install install libamdf77.la $(DESTDIR)$(libdir)/libamdf77.la
  
  #-------------------------------------------------------------------------------
  # Remove all but the files in the original distribution
-@@ -73,4 +75,4 @@
+@@ -73,4 +79,4 @@
  purge: distclean
  
  distclean: clean
