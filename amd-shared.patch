@@ -34,14 +34,14 @@ diff -ur AMD/Demo/Makefile AMD-shared/Demo/Makefile
  amd_f77demo: amd_f77demo.f f77lib
 -	$(F77) $(F77FLAGS) -o amd_f77demo amd_f77demo.f ../Lib/libamdf77.a \
 -	    $(F77LIB)
-+	libtool --tag=F77 --mode=link $(F77) $(LDFLAGS) $(F77FLAGS) -I../Include -o amd_f77demo amd_f77demo.f ../Lib/libamd.la $(F77LIB)
++	libtool --tag=F77 --mode=link $(F77) $(LDFLAGS) $(F77FLAGS) -I../Include -o amd_f77demo amd_f77demo.f ../Lib/libamdf77.la $(F77LIB)
  	./amd_f77demo > my_amd_f77demo.out
  	- diff amd_f77demo.out my_amd_f77demo.out
  
  amd_f77simple: amd_f77simple.f f77lib
 -	$(F77) $(F77FLAGS) -o amd_f77simple amd_f77simple.f \
 -	    ../Lib/libamdf77.a $(F77LIB)
-+	libtool --tag=F77 --mode=link $(F77) $(LDFLAGS) $(F77FLAGS) -I../Include -o amd_f77simple amd_f77simple.f ../Lib/libamd.la $(F77LIB)
++	libtool --tag=F77 --mode=link $(F77) $(LDFLAGS) $(F77FLAGS) -I../Include -o amd_f77simple amd_f77simple.f ../Lib/libamdf77.la $(F77LIB)
  	./amd_f77simple > my_amd_f77simple.out
  	- diff amd_f77simple.out my_amd_f77simple.out
  
