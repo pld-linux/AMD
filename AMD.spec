@@ -57,7 +57,7 @@ Statyczna biblioteka AMD.
 %package fortran
 Summary:	Fortran version of AMD library
 Summary(pl.UTF-8):	Wersja biblioteki AMD dla programów w Fortranie
-Group:		Development/Libraries
+Group:		Libraries
 
 %description fortran
 Fortran version of AMD library.
@@ -65,10 +65,24 @@ Fortran version of AMD library.
 %description fortran -l pl.UTF-8
 Wersja biblioteki AMD dla programów napisanych w Fortranie.
 
+%package fortran-devel
+Summary:	Fortran version of AMD library - development files
+Summary(pl.UTF-8):	Wersja biblioteki AMD dla programów w Fortranie - pliki programistyczne
+Group:		Development/Libraries
+Requires:	%{name}-fortran = %{version}-%{release}
+
+%description fortran-devel
+Fortran version of AMD library - development files.
+
+%description fortran-devel -l pl.UTF-8
+Wersja biblioteki AMD dla programów w Fortranie - pliki
+programistyczne.
+
 %package fortran-static
 Summary:	Fortran version of AMD static library
 Summary(pl.UTF-8):	Wersja statycznej biblioteki AMD dla programów w Fortranie
 Group:		Development/Libraries
+Requires:	%{name}-fortran-devel = %{version}-%{release}
 
 %description fortran-static
 Fortran version of AMD static library.
@@ -129,10 +143,13 @@ rm -rf $RPM_BUILD_ROOT
 
 %files fortran
 %defattr(644,root,root,755)
-%{_libdir}/libamdf77.la
 %attr(755,root,root) %{_libdir}/libamdf77.so.*.*.*
-%attr(755,root,root) %{_libdir}/libamdf77.so.0
+%attr(755,root,root) %ghost %{_libdir}/libamdf77.so.0
+
+%files fortran-devel
+%defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libamdf77.so
+%{_libdir}/libamdf77.la
 
 %files fortran-static
 %defattr(644,root,root,755)
