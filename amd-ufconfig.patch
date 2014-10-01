@@ -1,6 +1,6 @@
---- AMD/Demo/Makefile.orig	2012-05-27 01:13:34.000000000 +0200
-+++ AMD/Demo/Makefile	2012-06-27 15:15:08.539047966 +0200
-@@ -4,11 +4,11 @@
+--- AMD/Demo/Makefile.orig	2014-10-01 19:46:11.263025978 +0200
++++ AMD/Demo/Makefile	2014-10-01 19:57:46.742996793 +0200
+@@ -4,16 +4,15 @@
  
  default: amd_simple amd_demo amd_demo2 amd_l_demo
  
@@ -13,8 +13,14 @@
 -INC = ../Include/amd.h ../../SuiteSparse_config/SuiteSparse_config.h
 +INC = ../Include/amd.h
  
+-LIB2 = ../../SuiteSparse_config/libsuitesparseconfig.a $(LIB)
++LIB2 = -lsuitesparseconfig $(LIB)
+ 
  library:
+-	( cd ../../SuiteSparse_config ; $(MAKE) )
  	( cd ../Lib ; $(MAKE) )
+ 
+ f77lib:
 --- AMD/Doc/Makefile.orig	2012-05-28 02:24:04.000000000 +0200
 +++ AMD/Doc/Makefile	2012-06-27 15:15:47.109046348 +0200
 @@ -4,7 +4,7 @@

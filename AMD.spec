@@ -1,18 +1,19 @@
 Summary:	AMD: Approximate Minimum Degree
 Summary(pl.UTF-8):	AMD - przybliżony algorytm minimalnego stopnia
 Name:		AMD
-Version:	2.3.1
+Version:	2.4.0
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://www.cise.ufl.edu/research/sparse/amd/%{name}-%{version}.tar.gz
-# Source0-md5:	ee402611aa672257752611cfac10d7cd
+# Source0-md5:	5044de774a2f7804d09ac0d5134d6884
 Patch0:		amd-ufconfig.patch
 Patch1:		amd-shared.patch
 URL:		http://www.cise.ufl.edu/research/sparse/amd/
-BuildRequires:	SuiteSparse_config >= 4.0.0
+BuildRequires:	SuiteSparse_config >= 4.3.0
 BuildRequires:	gcc-fortran
 BuildRequires:	libtool >= 2:1.5
+Requires:	SuiteSparse_config-libs >= 4.3.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -34,7 +35,7 @@ Summary:	Header files for AMD library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki AMD
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	SuiteSparse_config >= 4.0.0
+Requires:	SuiteSparse_config >= 4.3.0
 
 %description devel
 Header files for AMD library.
